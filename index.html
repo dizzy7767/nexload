@@ -677,6 +677,180 @@
     section{ padding:80px 0; }
     .hero{ padding:150px 0 70px; }
   }
+  /* ===== GO TO TOP ===== */
+  .go-to-top{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--lime);
+    color:var(--brand-dark);
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:90;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    opacity:0;
+    transform:translateY(12px);
+    pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease, background .2s ease;
+  }
+  .go-to-top.visible{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .go-to-top:hover{
+    background:var(--brand-white);
+    transform:translateY(-3px);
+  }
+  .go-to-top[hidden]{ display:flex; }
+  @media (max-width:640px){
+    .go-to-top{
+      right:16px;
+      bottom:16px;
+      width:40px;
+      height:40px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .go-to-top{ transition:opacity .01s linear; }
+    .go-to-top:hover{ transform:none; }
+  }
+
+  /* ===== TALK TO NEXLOAD MODAL ===== */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(0,0,0,0.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease;
+  }
+  .modal-overlay.open{
+    opacity:1;
+    visibility:visible;
+  }
+  .modal-overlay[hidden]{ display:flex; }
+  .modal{
+    position:relative;
+    background:var(--dark-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:40px 36px 34px;
+    max-width:420px;
+    width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    transform:translateY(16px) scale(.98);
+    opacity:0;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1), opacity .3s ease;
+  }
+  .modal-overlay.open .modal{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  .modal-close{
+    position:absolute;
+    top:16px; right:16px;
+    width:32px; height:32px;
+    border-radius:50%;
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .modal-close:hover{ border-color:var(--lime); color:var(--lime); }
+  .modal-eyebrow{
+    font-family:'Ubuntu Mono', monospace;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--lime);
+    margin-bottom:14px;
+  }
+  .modal h3{
+    font-size:24px;
+    margin-bottom:14px;
+    padding-right:20px;
+  }
+  .modal-lead{
+    color:var(--muted);
+    font-size:15px;
+    margin-bottom:28px;
+  }
+  .modal-contact{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    margin-bottom:28px;
+  }
+  .modal-contact-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--dark);
+    padding:14px 16px;
+    transition:background .2s ease;
+  }
+  .modal-contact-item:hover{ background:var(--dark-3); }
+  .modal-contact-label{
+    font-family:'Ubuntu Mono', monospace;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted-2);
+  }
+  .modal-contact-value{
+    font-size:14px;
+    color:var(--white);
+  }
+  .modal-qr{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    padding-top:8px;
+  }
+  .modal-qr-img{
+    width:152px;
+    height:152px;
+    border-radius:6px;
+    background:var(--dark-3);
+    border:1px solid var(--line);
+    object-fit:contain;
+  }
+  .modal-qr-caption{
+    font-family:'Ubuntu Mono', monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--muted-2);
+  }
+  @media (max-width:480px){
+    .modal{ padding:32px 22px 28px; }
+    .modal h3{ font-size:21px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .modal-overlay, .modal{ transition:opacity .01s linear; }
+    .modal{ transform:none; }
+  }
 </style>
 </head>
 <body>
@@ -688,7 +862,7 @@
       <a href="#solutions">Solutions</a>
       <a href="#how">How it works</a>
       <!-- <a href="#trust">About</a> -->
-      <a href="#what">About</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="navcta">
@@ -750,7 +924,7 @@
   </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- PROBLEM (temporarily disabled — kept in code for possible future use)
 <section id="problem">
   <div class="wrap">
     <div class="section-head reveal">
@@ -770,6 +944,8 @@
     <div class="problem-conclusion reveal">Nexload changes the workflow.</div>
   </div>
 </section>
+-->
+
 
 <!-- TRANSFORMATION -->
 <section id="solutions" class="divider">
@@ -846,12 +1022,12 @@
 </section>
 
 <!-- BIG STATEMENT -->
-<section class="statement divider">
+<!-- <section class="statement divider">
   <div class="wrap reveal">
     <h2>Your warehouse team shouldn't need to chase a truck.</h2>
     <p>Nexload takes ownership of the transportation coordination, keeping your team informed without requiring them to make calls, chase updates or manage transporter follow-ups.</p>
   </div>
-</section>
+</section> -->
 
 <!-- FEATURES -->
 <section id="what" class="divider">
@@ -913,13 +1089,24 @@
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="divider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">About Nexload</div>
+      <h2>Building a simpler way to move goods.</h2>
+      <p style="margin-top:20px; color:var(--muted); font-size:17px; max-width:600px;">Nexload is building a simpler way for warehouses to manage transportation. We connect warehouses with transporters and take care of the coordination, updates and delivery workflow — replacing manual calls and follow-ups with a clear digital process.</p>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="wrap">
     <h2>Ready to stop chasing transport?</h2>
     <p>Let Nexload handle the coordination from warehouse to delivery.</p>
     <div class="cta-actions">
-      <a class="btn btn-primary" href="#contact">Talk to Nexload</a>
+      <button type="button" class="btn btn-primary" id="talkToNexloadBtn" aria-haspopup="dialog" aria-controls="talkModal">Talk to Nexload</button>
       <a class="btn btn-ghost" href="#contact">Get Started</a>
     </div>
   </div>
@@ -938,7 +1125,7 @@
           <div class="fhead">Company</div>
           <a href="#how">How it works</a>
           <a href="#solutions">Solutions</a>
-          <a href="#what">About</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
@@ -958,6 +1145,49 @@
     </div>
   </div>
 </footer>
+
+<!-- GO TO TOP -->
+<button type="button" class="go-to-top" id="goToTopBtn" aria-label="Go to top" hidden>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<!-- TALK TO NEXLOAD MODAL -->
+<div class="modal-overlay" id="talkModalOverlay" hidden>
+  <div class="modal" id="talkModal" role="dialog" aria-modal="true" aria-labelledby="talkModalTitle">
+    <button type="button" class="modal-close" id="talkModalClose" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="modal-eyebrow">Talk to Nexload</div>
+    <h3 id="talkModalTitle">Let's get your shipment moving.</h3>
+    <p class="modal-lead">Have a shipment to move or want to learn how Nexload can simplify your transportation workflow?</p>
+
+    <div class="modal-contact">
+      <a href="mailto:support@nexload.in" class="modal-contact-item">
+        <span class="modal-contact-label">Email</span>
+        <span class="modal-contact-value">support@nexload.in</span>
+      </a>
+      <a href="tel:+91XXXXXXXXXX" class="modal-contact-item">
+        <span class="modal-contact-label">Phone</span>
+        <span class="modal-contact-value">+91 XXXXX XXXXX</span>
+      </a>
+    </div>
+
+    <!-- <div class="modal-qr">
+      <img id="modalQrImg" class="modal-qr-img" src="" alt="Nexload QR code" width="152" height="152" loading="lazy">
+      <span class="modal-qr-caption">Scan to save our contact</span>
+    </div> -->
+  </div>
+</div>
+
+<script>
+  // Configure the QR code source here. Swap for a hosted URL when ready,
+  // e.g. QR_CODE_URL = "https://example.com/nexload-qr.png" — nothing else needs to change.
+  const QR_CODE_URL = "/images/qr/nexload-qr.png";
+</script>
 
 <script>
   // Theme toggle (dark is default; state kept in memory only for this session)
@@ -1056,6 +1286,74 @@
     });
   }, { threshold: 0.2 });
   revealEls.forEach(el => io.observe(el));
+
+  // Reduced motion helper
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Go to top button
+  (function(){
+    const btn = document.getElementById('goToTopBtn');
+    if(!btn) return;
+    const SHOW_AT = 400;
+
+    function onScroll(){
+      if(window.scrollY > SHOW_AT){
+        btn.hidden = false;
+        requestAnimationFrame(() => btn.classList.add('visible'));
+      } else {
+        btn.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    });
+  })();
+
+  // Talk to Nexload modal
+  (function(){
+    const openBtn = document.getElementById('talkToNexloadBtn');
+    const overlay = document.getElementById('talkModalOverlay');
+    const closeBtn = document.getElementById('talkModalClose');
+    const qrImg = document.getElementById('modalQrImg');
+    if(!openBtn || !overlay) return;
+
+    if(qrImg && typeof QR_CODE_URL !== 'undefined'){
+      qrImg.src = QR_CODE_URL;
+    }
+
+    let lastFocused = null;
+
+    function openModal(){
+      lastFocused = document.activeElement;
+      overlay.hidden = false;
+      requestAnimationFrame(() => overlay.classList.add('open'));
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+      document.addEventListener('keydown', onKeydown);
+    }
+
+    function closeModal(){
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKeydown);
+      const finish = () => { overlay.hidden = true; };
+      if(prefersReducedMotion){ finish(); } else { setTimeout(finish, 260); }
+      if(lastFocused) lastFocused.focus();
+    }
+
+    function onKeydown(e){
+      if(e.key === 'Escape') closeModal();
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) closeModal();
+    });
+  })();
 </script>
 
 </body>
