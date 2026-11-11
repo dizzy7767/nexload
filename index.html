@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nexload — Digital Transportation Coordination for Modern Warehouses</title>
-<meta name="description" content="Nexload connects warehouses and transporters through one digital transportation workflow — from shipment creation to delivery and Proof of Delivery.">
+<meta name="description" content="Nexload connects warehouses and transporters through one digital transportation workflow — from shipment creation to delivery.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
    0. RESET
 ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;scroll-padding-top:100px;}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
@@ -410,6 +410,16 @@ section{position:relative;}
 .problem-grid{display:grid;grid-template-columns:0.85fr 1fr;gap:80px;align-items:start;}
 .problem-head{position:sticky;top:140px;}
 .problem-statement{margin-top:36px;padding-top:28px;border-top:1px solid var(--border);font-size:17px;line-height:1.6;color:var(--text-soft);max-width:40ch;}
+.approach-grid{align-items:center;}
+.approach-grid .problem-head{position:static;}
+.approach-body .mono-label{display:block;margin-bottom:18px;}
+.approach-lead{font-size:clamp(19px,1.9vw,24px);line-height:1.5;letter-spacing:-0.01em;color:var(--text);max-width:34ch;}
+.approach-list{margin-top:36px;border-top:1px solid var(--border);}
+.approach-list li{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid var(--border);}
+.approach-num{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--text-faint);width:24px;flex-shrink:0;}
+.approach-item{font-size:18px;font-weight:600;letter-spacing:-0.01em;}
+.approach-list li::after{content:'';margin-left:auto;width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(171,255,2,.2);}
+.approach-outcome{margin-top:28px;font-size:17px;line-height:1.6;color:var(--text-soft);max-width:44ch;}
 .problem-chain{display:flex;flex-direction:column;}
 .problem-step{
   display:flex;align-items:center;gap:20px;padding:15px 0;position:relative;
@@ -466,111 +476,6 @@ section{position:relative;}
 }
 
 /* ============================================================
-   8. PRODUCT PREVIEW
-============================================================ */
-.product-section{padding:160px 0 130px;overflow:hidden;position:relative;text-align:center;}
-.product-section .container{position:relative;z-index:2;}
-.product-head{max-width:680px;margin:0 auto 64px;display:flex;flex-direction:column;align-items:center;}
-.product-head .body-lg{margin:0 auto;text-align:center;color:rgba(240,240,240,.64);}
-@media (max-width:768px){.product-section{padding:100px 0 80px;}}
-
-/* Floating dashboard frame */
-.product-frame{
-  background:var(--white);border-radius:var(--radius-lg);
-  box-shadow:0 50px 120px -30px rgba(0,0,0,.55);
-  overflow:hidden;text-align:left;color:var(--dark);
-}
-.product-topbar{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:16px 28px;border-bottom:1px solid rgba(5,36,36,.1);
-}
-.product-topbar-left{display:flex;align-items:center;gap:34px;min-width:0;}
-.product-brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px;letter-spacing:-0.01em;color:var(--dark);flex-shrink:0;}
-.product-brand img{width:16px;}
-.product-nav{display:flex;align-items:center;gap:22px;}
-.product-nav span{font-size:13px;color:rgba(5,36,36,.42);font-weight:500;white-space:nowrap;}
-.product-nav span.is-active{color:var(--dark);}
-.product-badge{
-  font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--dark);background:var(--lime);padding:6px 11px;border-radius:20px;font-weight:600;flex-shrink:0;
-}
-@media (max-width:760px){.product-nav{display:none;}}
-@media (max-width:560px){.product-topbar{flex-wrap:wrap;row-gap:10px;}}
-
-.product-body{padding:30px 28px 34px;}
-.product-greeting-title{font-size:22px;font-weight:600;letter-spacing:-0.015em;margin-bottom:4px;}
-.product-greeting-sub{font-size:14px;color:rgba(5,36,36,.5);margin-bottom:28px;}
-
-.product-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
-.stat-card{border:1px solid rgba(5,36,36,.1);border-radius:var(--radius-md);padding:18px 20px;}
-.stat-card .stat-num{font-family:var(--font-display);font-size:28px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;}
-.stat-card .stat-label{font-size:12.5px;color:rgba(5,36,36,.5);}
-.stat-card.is-attention{border-color:rgba(171,255,2,.6);background:rgba(171,255,2,.07);}
-.stat-card.is-attention .stat-num{color:#6b7f00;}
-@media (max-width:760px){.product-stats{grid-template-columns:1fr 1fr;}}
-
-.product-main{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start;}
-@media (max-width:900px){.product-main{grid-template-columns:1fr;}}
-.product-side{display:flex;flex-direction:column;gap:18px;}
-
-.product-panel{border:1px solid rgba(5,36,36,.1);border-radius:var(--radius-md);overflow:hidden;}
-.product-panel-title{font-size:13px;font-weight:600;padding:15px 20px;border-bottom:1px solid rgba(5,36,36,.1);}
-
-/* Shipment table */
-.ship-row{
-  display:grid;grid-template-columns:0.9fr 1fr 1.05fr 0.75fr 1.15fr;gap:10px;align-items:center;
-  padding:13px 20px;border-bottom:1px solid rgba(5,36,36,.07);font-size:13px;transition:background 200ms;
-}
-.ship-row:last-child{border-bottom:none;}
-.ship-row.is-head{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(5,36,36,.4);}
-.ship-row:not(.is-head):hover{background:rgba(5,36,36,.035);}
-.ship-id{font-family:var(--font-mono);font-weight:600;}
-.ship-status{display:inline-flex;align-items:center;gap:6px;font-weight:500;}
-.ship-status::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-.status-transit::before{background:#2E7CF6;}
-.status-delivered::before{background:#4CAF50;}
-.status-pending::before{background:#E0A400;}
-.cell-label{display:none;}
-@media (max-width:640px){
-  .ship-row{grid-template-columns:1fr 1fr;row-gap:10px;padding:16px 20px;}
-  .ship-row.is-head{display:none;}
-  .ship-cell:first-child{grid-column:1/-1;}
-  .cell-label{display:block;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:rgba(5,36,36,.35);margin-bottom:3px;}
-}
-
-/* Shipment detail timeline */
-.detail-header{padding:15px 20px;border-bottom:1px solid rgba(5,36,36,.1);}
-.detail-id{font-family:var(--font-mono);font-weight:600;font-size:14px;margin-bottom:2px;}
-.detail-route{font-size:12.5px;color:rgba(5,36,36,.5);}
-.detail-timeline{padding:18px 20px 20px;display:flex;flex-direction:column;}
-.tl-step{display:flex;align-items:center;gap:12px;padding:8px 0;position:relative;}
-.tl-step:not(:last-child)::before{content:'';position:absolute;left:9px;top:27px;bottom:-8px;width:1px;background:rgba(5,36,36,.15);}
-.tl-dot{
-  width:19px;height:19px;border-radius:50%;flex-shrink:0;position:relative;z-index:2;
-  display:flex;align-items:center;justify-content:center;font-size:10px;
-  background:var(--white);border:1.5px solid rgba(5,36,36,.25);color:transparent;
-}
-.tl-step.is-done .tl-dot{background:var(--dark);border-color:var(--dark);color:var(--white);}
-.tl-step.is-current .tl-dot{border-color:var(--lime);border-width:2px;animation:tlPulse 1.8s ease-in-out infinite;}
-.tl-label{font-size:13px;color:rgba(5,36,36,.5);}
-.tl-step.is-done .tl-label{color:var(--dark);}
-.tl-step.is-current .tl-label{font-weight:600;color:var(--dark);}
-@keyframes tlPulse{0%,100%{box-shadow:0 0 0 0 rgba(171,255,2,.55);}50%{box-shadow:0 0 0 5px rgba(171,255,2,0);}}
-
-/* Attention required */
-.attn-item{display:flex;flex-direction:column;padding:13px 20px;border-bottom:1px solid rgba(5,36,36,.07);border-left:3px solid transparent;}
-.attn-item:last-child{border-bottom:none;}
-.attn-item.sev-delayed{border-left-color:#E0A400;}
-.attn-item.sev-pending{border-left-color:rgba(5,36,36,.28);}
-.attn-item.sev-pod{border-left-color:#7a9a00;}
-.attn-tag{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin-bottom:4px;}
-.attn-item.sev-delayed .attn-tag{color:#a97a00;}
-.attn-item.sev-pending .attn-tag{color:rgba(5,36,36,.45);}
-.attn-item.sev-pod .attn-tag{color:#6b8f00;}
-.attn-title{font-size:13px;font-weight:600;margin-bottom:2px;}
-.attn-desc{font-size:12px;color:rgba(5,36,36,.5);}
-
-/* ============================================================
    9. FEATURES
 ============================================================ */
 .features-head{max-width:680px;margin-bottom:80px;}
@@ -593,111 +498,17 @@ section{position:relative;}
 }
 
 /* ============================================================
-   9b. EXCEPTION MANAGEMENT
-============================================================ */
-.exceptions-head{max-width:680px;margin-bottom:60px;}
-.exceptions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:48px;}
-.exception-card{background:var(--bg);padding:30px 30px 32px;border-left:3px solid transparent;}
-.exception-card.sev-delayed{border-left-color:#C99400;}
-.exception-card.sev-pending{border-left-color:var(--text-faint);}
-.exception-card.sev-pod{border-left-color:var(--lime);}
-.exception-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:20px;color:var(--text-faint);}
-.exception-id{font-size:19px;font-weight:600;letter-spacing:-0.015em;margin-bottom:8px;}
-.exception-desc{font-size:14.5px;color:var(--text-soft);line-height:1.55;}
-.exceptions-note{font-size:17px;color:var(--text-soft);max-width:56ch;}
-@media (max-width:900px){.exceptions-grid{grid-template-columns:1fr;}}
-
-/* ============================================================
-   10. TRANSPORTER WORKFLOW (reuses the former transparency-track pattern)
-============================================================ */
-.transparency-head{max-width:680px;margin-bottom:26px;}
-.transparency-body{margin-bottom:90px;}
-.tp-track{position:relative;}
-.tp-line-bg{position:absolute;top:17.5px;left:8.33%;right:8.33%;height:1px;background:var(--border);}
-.tp-line-fill{position:absolute;top:17.5px;left:8.33%;height:1px;background:var(--dark);width:83.33%;}
-.tp-nodes{display:flex;}
-.tp-node{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding:0 10px;}
-.tp-dot{width:35px;height:35px;border-radius:50%;background:var(--dark);border:1.5px solid var(--dark);position:relative;z-index:2;display:flex;align-items:center;justify-content:center;transition:background 300ms var(--ease-soft), border-color 300ms var(--ease-soft);}
-.tp-node:hover .tp-dot{background:var(--lime);border-color:var(--lime);}
-.tp-num{font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--white);transition:color 300ms var(--ease-soft);}
-.tp-node:hover .tp-num{color:var(--dark);}
-.tp-label{font-size:14.5px;font-weight:600;letter-spacing:-0.01em;}
-@media (max-width:900px){
-  .tp-nodes{flex-direction:column;gap:30px;}
-  .tp-line-bg,.tp-line-fill{top:0;bottom:0;left:17.5px;right:auto;width:1px;height:100%;}
-  .tp-node{flex-direction:row;align-items:center;text-align:left;padding:0;}
-}
-
-/* ============================================================
-   10b. ANALYTICS
-============================================================ */
-.analytics-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:56px;}
-.analytics-head{max-width:640px;}
-.analytics-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,240,240,.4);white-space:nowrap;}
-
-.bi-topbar-right{display:flex;align-items:center;gap:12px;}
-.bi-filter{
-  display:inline-flex;align-items:center;gap:8px;
-  border:1px solid rgba(5,36,36,.14);border-radius:20px;
-  padding:7px 14px;font-size:12.5px;font-weight:500;color:var(--dark);
-  background:transparent;flex-shrink:0;
-}
-.bi-filter svg{width:10px;height:10px;color:rgba(5,36,36,.45);flex-shrink:0;}
-@media (max-width:420px){.bi-filter{display:none;}}
-
-.bi-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:18px;}
-.bi-kpis .stat-card{padding:16px 18px;}
-.bi-kpis .stat-num{font-size:23px;}
-@media (max-width:900px){.bi-kpis{grid-template-columns:repeat(3,1fr);}}
-@media (max-width:560px){.bi-kpis{grid-template-columns:1fr 1fr;}}
-
-.bi-charts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.bi-chart-card{border:1px solid rgba(5,36,36,.1);border-radius:var(--radius-md);padding:20px 20px 18px;}
-.bi-chart-title{font-size:13px;font-weight:600;margin-bottom:18px;color:var(--dark);}
-.bi-chart-sub{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:rgba(5,36,36,.38);margin-top:14px;}
-
-.bi-bars{display:flex;align-items:flex-end;gap:6px;height:90px;}
-.bi-bar-group{flex:1;display:flex;align-items:flex-end;gap:2px;height:100%;}
-.bi-bar{flex:1;border-radius:2px 2px 0 0;}
-.bi-bar.is-delivered{background:var(--lime);}
-.bi-bar.is-delayed{background:#E0A400;}
-.bi-bar-legend{display:flex;gap:16px;margin-top:14px;}
-.bi-bar-legend span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:rgba(5,36,36,.55);}
-.bi-bar-legend .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-
-.bi-donut{display:flex;align-items:center;gap:16px;}
-.bi-donut-svg{width:92px;height:92px;flex-shrink:0;transform:rotate(-90deg);}
-.bi-legend{display:flex;flex-direction:column;gap:9px;}
-.bi-legend li{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(5,36,36,.65);list-style:none;}
-.bi-legend .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-
-@media (max-width:900px){.bi-charts{grid-template-columns:1fr;}}
-
-/* ============================================================
-   10c. WHO IT'S FOR
-============================================================ */
-.who-head{max-width:640px;margin-bottom:64px;}
-.who-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
-.who-item{padding:32px 28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
-.who-title{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text);margin-bottom:16px;}
-.who-desc{font-size:15px;line-height:1.55;color:var(--text-soft);}
-@media (max-width:900px){.who-grid{grid-template-columns:1fr 1fr;}}
-@media (max-width:560px){.who-grid{grid-template-columns:1fr;}}
-
-/* ============================================================
-   10d. TRUST
-============================================================ */
-.trust-col-head{margin-bottom:40px;}
-.trust-list{display:flex;flex-direction:column;}
-.trust-list li{display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--border);font-size:16px;}
-.trust-list li:last-child{border-bottom:1px solid var(--border);}
-.trust-check{width:18px;height:18px;flex-shrink:0;color:var(--accent-text);}
-
-/* ============================================================
    11. ABOUT
 ============================================================ */
 .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:start;}
 .about-head{position:sticky;top:140px;}
+.about-intro{margin-top:24px;font-size:17px;}
+.about-intro + .about-intro{margin-top:14px;}
+.about-list{display:flex;flex-direction:column;}
+.about-item{padding:32px 0;border-top:1px solid var(--border);}
+.about-item:last-child{border-bottom:1px solid var(--border);}
+.about-item .feature-num{margin-bottom:14px;}
+.about-item .feature-desc{max-width:58ch;}
 @media (max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:36px;}
   .about-head{position:static;}
@@ -706,12 +517,12 @@ section{position:relative;}
 /* ============================================================
    12. FINAL CTA
 ============================================================ */
-.final-cta{padding:170px 0;text-align:center;overflow:hidden;position:relative;}
+.final-cta{padding:170px 0 0;text-align:center;overflow:hidden;position:relative;}
 .final-cta .container{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
 .final-cta-headline{max-width:760px;margin-bottom:24px;}
-.final-cta-body{margin:0 auto 52px;color:rgba(240,240,240,.66);text-align:center;}
+.final-cta-body{margin:0 auto;color:rgba(240,240,240,.66);text-align:center;}
 .final-cta-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
-@media (max-width:768px){.final-cta{padding:100px 0;}.final-cta-actions{flex-direction:column;width:100%;max-width:320px;}.final-cta-actions .btn{width:100%;justify-content:center;}}
+@media (max-width:768px){.final-cta{padding:100px 0 0;}}
 
 /* ============================================================
    13. FOOTER
@@ -746,48 +557,53 @@ footer.footer-dark{padding:90px 0 40px;position:relative;overflow:hidden;}
 @media (max-width:768px){.bg-route-art{opacity:.6;}}
 
 /* ============================================================
-   14. CONTACT MODAL
+   14. FOOTER CONTACT FORM
 ============================================================ */
-.modal-overlay{
-  position:fixed;inset:0;z-index:800;
-  background:rgba(2,14,14,.6);
-  backdrop-filter:blur(6px);
-  display:flex;align-items:center;justify-content:center;
-  padding:24px;
-  opacity:0;visibility:hidden;
-  transition:opacity var(--dur-ui) var(--ease-soft), visibility var(--dur-ui) var(--ease-soft);
+.footer-contact{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:start;padding-bottom:90px;margin-bottom:90px;border-bottom:1px solid rgba(240,240,240,.14);position:relative;z-index:2;}
+.footer-contact-title{font-size:clamp(28px,4vw,40px);font-weight:400;letter-spacing:-0.02em;line-height:1.1;margin:24px 0 18px;}
+.footer-contact-copy{color:rgba(240,240,240,.64);font-size:16px;line-height:1.6;max-width:42ch;margin-bottom:32px;}
+.footer-contact-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid rgba(240,240,240,.14);border-bottom:1px solid rgba(240,240,240,.14);max-width:420px;}
+.footer-contact-row span{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,240,240,.4);}
+.footer-contact-row a{font-size:15.5px;font-weight:500;color:var(--white);}
+.footer-contact-row a:hover{color:var(--lime);}
+.wa-qr{display:flex;align-items:center;gap:18px;margin-top:28px;max-width:420px;}
+.wa-qr-code{flex-shrink:0;display:block;padding:6px;background:var(--white);border-radius:var(--radius-sm);transition:transform var(--dur-ui) var(--ease-soft);}
+.wa-qr-code:hover{transform:translateY(-2px);}
+.wa-qr-code img{width:84px;height:84px;}
+.wa-qr-text{display:flex;flex-direction:column;gap:8px;}
+.wa-qr-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,240,240,.4);}
+.wa-qr-link{display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:500;color:var(--white);}
+.wa-qr-link svg{width:18px;height:18px;color:#25D366;flex-shrink:0;}
+.wa-qr-link:hover{color:var(--lime);}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.cf-field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.cf-field label{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,240,240,.5);}
+.cf-field input,.cf-field textarea{
+  font:inherit;font-size:15px;color:var(--white);
+  background:rgba(240,240,240,.04);
+  border:1px solid rgba(240,240,240,.18);border-radius:var(--radius-sm);
+  padding:14px 16px;width:100%;
+  transition:border-color var(--dur-micro) var(--ease-soft), background var(--dur-micro) var(--ease-soft);
 }
-.modal-overlay.open{opacity:1;visibility:visible;}
-.modal-card{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  max-width:520px;width:100%;
-  padding:48px;
-  position:relative;
-  transform:translateY(16px) scale(.98);
-  transition:transform var(--dur-ui) var(--ease);
-  max-height:88vh;overflow-y:auto;
-}
-.modal-overlay.open .modal-card{transform:translateY(0) scale(1);}
-.modal-close{
-  position:absolute;top:20px;right:20px;
-  width:36px;height:36px;border-radius:50%;
-  border:1px solid var(--border);background:transparent;color:var(--text);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  transition:border-color var(--dur-ui) var(--ease-soft), color var(--dur-ui) var(--ease-soft);
-}
-.modal-close:hover{border-color:var(--lime);color:var(--lime);}
-.modal-close svg{width:14px;height:14px;}
-.modal-title{font-size:clamp(26px,4vw,32px);font-weight:400;letter-spacing:-0.02em;margin-bottom:14px;line-height:1.1;}
-.modal-copy{color:var(--text-soft);font-size:15.5px;line-height:1.6;margin-bottom:36px;max-width:42ch;}
-.modal-contact-row{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-top:1px solid var(--border);}
-.modal-contact-row:last-of-type{border-bottom:1px solid var(--border);margin-bottom:32px;}
-.modal-contact-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
-.modal-contact-value{font-size:15.5px;font-weight:500;}
-.modal-qr{display:flex;align-items:center;gap:18px;}
-.modal-qr img{width:88px;height:88px;border-radius:var(--radius-sm);border:1px solid var(--border);}
-.modal-qr-text{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);max-width:16ch;}
+.cf-field textarea{min-height:130px;resize:vertical;}
+.cf-field input:focus,.cf-field textarea:focus{outline:none;border-color:var(--lime);background:rgba(240,240,240,.07);}
+.cf-field.invalid input,.cf-field.invalid textarea{border-color:#FF8A80;}
+.cf-error{display:none;font-size:13px;color:#FF8A80;}
+.cf-field.invalid .cf-error{display:block;}
+.cf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.cf-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px;}
+.cf-actions .btn[disabled]{opacity:.6;cursor:progress;transform:none;}
+.cf-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,240,240,.4);}
+.cf-alert{display:none;margin-top:18px;padding:12px 16px;border-radius:var(--radius-sm);font-size:14px;color:#FF8A80;border:1px solid rgba(255,138,128,.35);}
+.cf-alert.show{display:block;}
+.cf-success{display:none;padding:40px 0;}
+.cf-success.show{display:block;}
+.cf-success-icon{width:56px;height:56px;border-radius:50%;background:var(--lime);color:var(--dark);display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+.cf-success-icon svg{width:24px;height:24px;}
+.cf-success h3{font-size:26px;font-weight:400;letter-spacing:-0.02em;margin-bottom:10px;}
+.cf-success p{color:rgba(240,240,240,.64);font-size:15.5px;margin-bottom:28px;max-width:44ch;}
+@media (max-width:900px){.footer-contact{grid-template-columns:1fr;gap:44px;}}
+@media (max-width:560px){.cf-row{grid-template-columns:1fr;gap:0;}.cf-actions .btn{width:100%;justify-content:center;}}
 
 /* ============================================================
    15. GO TO TOP
@@ -835,14 +651,13 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
       NEXLOAD
     </a>
     <div class="nav-links">
-      <a href="#product">Product</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#who-for">Solutions</a>
-      <a href="#about">About</a>
-      <a href="#" data-open-modal>Contact</a>
+      <a href="#top">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </div>
     <div class="nav-right">
-      <button class="btn btn-primary nav-cta" data-open-modal>Book a Demo</button>
+      <a href="#contact" class="btn btn-primary nav-cta">Contact Us</a>
       <button class="nav-burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -852,12 +667,11 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#product" data-close-menu>Product</a>
-  <a href="#how-it-works" data-close-menu>How it works</a>
-  <a href="#who-for" data-close-menu>Solutions</a>
-  <a href="#about" data-close-menu>About</a>
-  <a href="#" data-open-modal data-close-menu>Contact</a>
-  <button class="btn btn-primary" data-open-modal data-close-menu>Book a Demo</button>
+  <a href="#top" data-close-menu>Home</a>
+  <a href="#about" data-close-menu>About Us</a>
+  <a href="#services" data-close-menu>Services</a>
+  <a href="#contact" data-close-menu>Contact</a>
+  <a href="#contact" class="btn btn-primary" data-close-menu>Contact Us</a>
 </div>
 
 <main id="main">
@@ -869,10 +683,10 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
       <span class="eyebrow hero-eyebrow reveal">Digital Transportation Coordination</span>
       <h1 class="display-xl hero-headline reveal reveal-delay-1">Stop managing transport.<br>Start <span class="accent">moving goods.</span></h1>
       <div class="hero-sub reveal reveal-delay-2">
-        <p class="body-lg">Nexload connects warehouses and transporters through one digital transportation workflow — from shipment creation to delivery and Proof of Delivery.</p>
+        <p class="body-lg">Nexload connects warehouses and transporters through one digital transportation workflow — from shipment creation to delivery.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" data-open-modal>Book a Demo <span class="btn-arrow">→</span></button>
-          <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+          <a href="#contact" class="btn btn-primary">Contact Us <span class="btn-arrow">→</span></a>
+          <a href="#how-it-works" class="btn btn-ghost">How It Works</a>
         </div>
       </div>
 
@@ -923,24 +737,23 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
     </div>
   </section>
 
-  <!-- PROBLEM -->
+  <!-- PROBLEM & OUR APPROACH -->
   <section class="section-pad bg-alt" id="problem">
     <div class="container">
-      <div class="problem-grid">
+      <div class="problem-grid approach-grid">
         <div class="problem-head reveal">
-          <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">The Problem</span>
-          <h2 class="display-lg" style="margin-top:24px;">Transportation breaks down between the warehouse and the road.</h2>
-          <p class="problem-statement">When every shipment depends on calls, messages and manual follow-ups, small delays become operational overhead.</p>
+          <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">The Problem &amp; Our Approach</span>
+          <h2 class="display-lg" style="margin-top:24px;">The transportation industry remains highly fragmented and unorganized.</h2>
         </div>
-        <div class="problem-chain" id="problemChain">
-          <div class="problem-step is-origin"><div class="problem-dot">●</div><span class="problem-label">Warehouse</span></div>
-          <div class="problem-step"><div class="problem-dot">01</div><span class="problem-label">Call transporter</span></div>
-          <div class="problem-step"><div class="problem-dot">02</div><span class="problem-label">WhatsApp / messages</span></div>
-          <div class="problem-step"><div class="problem-dot">03</div><span class="problem-label">Wait for confirmation</span></div>
-          <div class="problem-step"><div class="problem-dot">04</div><span class="problem-label">Follow up</span></div>
-          <div class="problem-step"><div class="problem-dot">05</div><span class="problem-label">Ask for shipment status</span></div>
-          <div class="problem-step"><div class="problem-dot">06</div><span class="problem-label">Wait for delivery</span></div>
-          <div class="problem-step is-final"><div class="problem-dot">07</div><span class="problem-label">Chase POD</span></div>
+        <div class="approach-body reveal reveal-delay-1">
+          <span class="mono-label">Our approach</span>
+          <p class="approach-lead">We are bringing scattered transporters together into an organized network, improving vehicle accessibility, load availability and turnaround time (TAT).</p>
+          <ul class="approach-list">
+            <li><span class="approach-num">01</span><span class="approach-item">Vehicle accessibility</span></li>
+            <li><span class="approach-num">02</span><span class="approach-item">Load availability</span></li>
+            <li><span class="approach-num">03</span><span class="approach-item">Turnaround time (TAT)</span></li>
+          </ul>
+          <p class="approach-outcome">This helps transporters and customers access better opportunities and more competitive rates.</p>
         </div>
       </div>
     </div>
@@ -951,7 +764,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
     <div class="container">
       <div class="hiw-head reveal">
         <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">How it works</span>
-        <h2 class="display-lg" style="margin-top:24px;">From shipment to POD, one connected journey.</h2>
+        <h2 class="display-lg" style="margin-top:24px;">One coordinated network for transporters and customers.</h2>
       </div>
       <div class="hiw-track" id="hiwTrack">
         <div class="hiw-line"></div>
@@ -959,365 +772,73 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
         <div class="hiw-grid" id="hiwGrid">
           <div class="hiw-item" data-hiw>
             <div class="hiw-num-row"><div class="hiw-dot"><span class="hiw-num">01</span></div></div>
-            <div class="hiw-title">Shipment Created</div>
-            <div class="hiw-desc">Warehouse creates the shipment and enters the required details.</div>
+            <div class="hiw-title">Connect Transporters</div>
+            <div class="hiw-desc">Bring scattered transporters together on one coordinated network.</div>
           </div>
           <div class="hiw-item" data-hiw>
             <div class="hiw-num-row"><div class="hiw-dot"><span class="hiw-num">02</span></div></div>
-            <div class="hiw-title">Transport Arranged</div>
-            <div class="hiw-desc">Nexload coordinates the transportation with the transporter.</div>
+            <div class="hiw-title">Improve Availability</div>
+            <div class="hiw-desc">Improve vehicle availability and accessibility.</div>
           </div>
           <div class="hiw-item" data-hiw>
             <div class="hiw-num-row"><div class="hiw-dot"><span class="hiw-num">03</span></div></div>
-            <div class="hiw-title">Shipment Moves</div>
-            <div class="hiw-desc">The shipment progresses through its transportation journey.</div>
+            <div class="hiw-title">Match Vehicles &amp; Loads</div>
+            <div class="hiw-desc">Connect available vehicles with loads more efficiently.</div>
           </div>
           <div class="hiw-item" data-hiw>
             <div class="hiw-num-row"><div class="hiw-dot"><span class="hiw-num">04</span></div></div>
-            <div class="hiw-title">Delivery Completed</div>
-            <div class="hiw-desc">Delivery is confirmed.</div>
+            <div class="hiw-title">Reduce TAT</div>
+            <div class="hiw-desc">Reduce turnaround time (TAT).</div>
           </div>
           <div class="hiw-item" data-hiw>
             <div class="hiw-num-row"><div class="hiw-dot"><span class="hiw-num">05</span></div></div>
-            <div class="hiw-title">POD Captured</div>
-            <div class="hiw-desc">Proof of Delivery is captured and made available.</div>
+            <div class="hiw-title">Better Rates</div>
+            <div class="hiw-desc">Improve load availability and deliver better rates for both transporters and customers.</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCT PREVIEW -->
-  <section class="product-section bg-dark" id="product">
-    <div class="grid-lines"></div>
-    <div class="container">
-      <div class="product-head">
-        <span class="eyebrow reveal" style="margin-bottom:24px;">Product Preview</span>
-        <h2 class="display-lg reveal reveal-delay-1" style="margin-top:0;margin-bottom:18px;">This is what the workflow looks like inside Nexload.</h2>
-        <p class="body-lg reveal reveal-delay-2">A concept of the Nexload operations dashboard, shown ahead of general availability.</p>
-      </div>
-
-      <div class="product-frame reveal reveal-delay-3">
-        <div class="product-topbar">
-          <div class="product-topbar-left">
-            <div class="product-brand"><img src="data:image/png;base64,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" alt="" style="width:20px;height:auto;flex-shrink:0;">Nexload</div>
-            <div class="product-nav">
-              <span class="is-active">Dashboard</span>
-              <span>Shipments</span>
-              <span>Transporters</span>
-              <span>POD</span>
-              <span>Analytics</span>
-            </div>
-          </div>
-          <span class="product-badge">Product Preview</span>
-        </div>
-
-        <div class="product-body">
-          <div class="product-greeting-title">Good morning</div>
-          <p class="product-greeting-sub">Here's what's happening with your shipments.</p>
-
-          <div class="product-stats">
-            <div class="stat-card reveal"><div class="stat-num">24</div><div class="stat-label">Active Shipments</div></div>
-            <div class="stat-card reveal reveal-delay-1"><div class="stat-num">18</div><div class="stat-label">In Transit</div></div>
-            <div class="stat-card reveal reveal-delay-2"><div class="stat-num">5</div><div class="stat-label">Delivered Today</div></div>
-            <div class="stat-card is-attention reveal reveal-delay-3"><div class="stat-num">1</div><div class="stat-label">Needs Attention</div></div>
-          </div>
-
-          <div class="product-main">
-            <div class="product-panel reveal">
-              <div class="product-panel-title">Shipments</div>
-              <div class="ship-row is-head">
-                <div>Shipment</div><div>Destination</div><div>Status</div><div>ETA</div><div>Transporter</div>
-              </div>
-              <div class="ship-row">
-                <div class="ship-cell ship-id">NX-3391</div>
-                <div class="ship-cell"><span class="cell-label">Destination</span>Chennai</div>
-                <div class="ship-cell"><span class="cell-label">Status</span><span class="ship-status status-transit">In Transit</span></div>
-                <div class="ship-cell"><span class="cell-label">ETA</span>5:30 PM</div>
-                <div class="ship-cell"><span class="cell-label">Transporter</span>ABC Logistics</div>
-              </div>
-              <div class="ship-row">
-                <div class="ship-cell ship-id">NX-3392</div>
-                <div class="ship-cell"><span class="cell-label">Destination</span>Bangalore</div>
-                <div class="ship-cell"><span class="cell-label">Status</span><span class="ship-status status-delivered">Delivered</span></div>
-                <div class="ship-cell"><span class="cell-label">ETA</span>Delivered</div>
-                <div class="ship-cell"><span class="cell-label">Transporter</span>XYZ Transport</div>
-              </div>
-              <div class="ship-row">
-                <div class="ship-cell ship-id">NX-3393</div>
-                <div class="ship-cell"><span class="cell-label">Destination</span>Kochi</div>
-                <div class="ship-cell"><span class="cell-label">Status</span><span class="ship-status status-pending">Pickup Pending</span></div>
-                <div class="ship-cell"><span class="cell-label">ETA</span>10:00 AM</div>
-                <div class="ship-cell"><span class="cell-label">Transporter</span>ABC Logistics</div>
-              </div>
-              <div class="ship-row">
-                <div class="ship-cell ship-id">NX-3394</div>
-                <div class="ship-cell"><span class="cell-label">Destination</span>Hyderabad</div>
-                <div class="ship-cell"><span class="cell-label">Status</span><span class="ship-status status-transit">In Transit</span></div>
-                <div class="ship-cell"><span class="cell-label">ETA</span>6:15 PM</div>
-                <div class="ship-cell"><span class="cell-label">Transporter</span>Southline Transport</div>
-              </div>
-            </div>
-
-            <div class="product-side">
-              <div class="product-panel reveal reveal-delay-1">
-                <div class="detail-header">
-                  <div class="detail-id">NX-3391</div>
-                  <div class="detail-route">Chennai → Bangalore · ETA 5:30 PM</div>
-                </div>
-                <div class="detail-timeline">
-                  <div class="tl-step is-done"><div class="tl-dot">✓</div><span class="tl-label">Shipment Created</span></div>
-                  <div class="tl-step is-done"><div class="tl-dot">✓</div><span class="tl-label">Transporter Assigned</span></div>
-                  <div class="tl-step is-done"><div class="tl-dot">✓</div><span class="tl-label">Pickup Confirmed</span></div>
-                  <div class="tl-step is-current"><div class="tl-dot">●</div><span class="tl-label">In Transit</span></div>
-                  <div class="tl-step"><div class="tl-dot"></div><span class="tl-label">Delivered</span></div>
-                  <div class="tl-step"><div class="tl-dot"></div><span class="tl-label">POD</span></div>
-                </div>
-              </div>
-
-              <div class="product-panel reveal reveal-delay-2">
-                <div class="product-panel-title">Attention Required</div>
-                <div class="attn-item sev-delayed">
-                  <span class="attn-tag">Shipment Delayed</span>
-                  <span class="attn-title">NX-3391</span>
-                  <span class="attn-desc">ETA changed from 3:00 PM to 5:30 PM</span>
-                </div>
-                <div class="attn-item sev-pending">
-                  <span class="attn-tag">Pickup Pending</span>
-                  <span class="attn-title">NX-3398</span>
-                  <span class="attn-desc">Transporter confirmation pending</span>
-                </div>
-                <div class="attn-item sev-pod">
-                  <span class="attn-tag">POD Pending</span>
-                  <span class="attn-title">NX-3401</span>
-                  <span class="attn-desc">Delivery completed, POD not received</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CAPABILITIES -->
-  <section class="section-pad bg-base" id="capabilities">
+  <!-- SERVICES -->
+  <section class="section-pad bg-alt" id="services">
     <div class="container">
       <div class="features-head reveal">
-        <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">Capabilities</span>
-        <h2 class="display-lg" style="margin-top:24px;">Built around the transportation workflow.</h2>
+        <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">Services</span>
+        <h2 class="display-lg" style="margin-top:24px;">Our core services.</h2>
       </div>
       <div class="features-grid">
         <div class="feature-item reveal">
           <span class="feature-num">01</span>
-          <div class="feature-title">Transporter Management</div>
-          <p class="feature-desc">Coordinate transporter activity and shipment assignments from one workflow.</p>
+          <div class="feature-title">Inventory Management</div>
+          <p class="feature-desc">Organized storage and stock handling so your goods are ready to move when you need them.</p>
         </div>
         <div class="feature-item reveal reveal-delay-1">
           <span class="feature-num">02</span>
-          <div class="feature-title">Shipment Management</div>
-          <p class="feature-desc">Create, manage and monitor shipments throughout their lifecycle.</p>
+          <div class="feature-title">FTL Movement</div>
+          <p class="feature-desc">Full truckload transport with the right vehicle for every load, matched from our network.</p>
         </div>
         <div class="feature-item reveal reveal-delay-2">
           <span class="feature-num">03</span>
-          <div class="feature-title">Digital POD</div>
-          <p class="feature-desc">Capture and access Proof of Delivery without waiting for manual paperwork.</p>
+          <div class="feature-title">Temperature-Controlled Logistics</div>
+          <p class="feature-desc">Reefer vehicles for perishables, pharmaceuticals and other temperature-sensitive goods.</p>
         </div>
         <div class="feature-item reveal">
           <span class="feature-num">04</span>
-          <div class="feature-title">Exception Management</div>
-          <p class="feature-desc">Surface delayed, pending or incomplete shipments that need attention.</p>
+          <div class="feature-title">Last-Mile Deliveries</div>
+          <p class="feature-desc">Fast, reliable final-leg delivery to stores, businesses and end customers.</p>
         </div>
         <div class="feature-item reveal reveal-delay-1">
           <span class="feature-num">05</span>
-          <div class="feature-title">Notifications</div>
-          <p class="feature-desc">Keep teams informed when important shipment events occur.</p>
+          <div class="feature-title">Contract Logistics</div>
+          <p class="feature-desc">Dedicated, long-term logistics arrangements built around your volumes and routes.</p>
         </div>
         <div class="feature-item reveal reveal-delay-2">
           <span class="feature-num">06</span>
-          <div class="feature-title">Analytics</div>
-          <p class="feature-desc">Understand transportation activity, delivery performance and operational trends.</p>
+          <div class="feature-title">Access to New Markets</div>
+          <p class="feature-desc">Reach new regions and customers through our growing network of transport partners.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- EXCEPTION MANAGEMENT -->
-  <section class="section-pad bg-alt" id="exceptions">
-    <div class="grid-lines"></div>
-    <div class="container">
-      <div class="exceptions-head reveal">
-        <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">Exception Management</span>
-        <h2 class="display-lg" style="margin-top:24px;">Don't monitor everything.<br>Know what needs attention.</h2>
-      </div>
-      <div class="exceptions-grid">
-        <div class="exception-card sev-delayed reveal">
-          <span class="exception-tag">Delayed</span>
-          <div class="exception-id">Shipment NX-3391</div>
-          <p class="exception-desc">ETA changed by 2h 30m.</p>
-        </div>
-        <div class="exception-card sev-pending reveal reveal-delay-1">
-          <span class="exception-tag">Pickup Pending</span>
-          <div class="exception-id">Shipment NX-3398</div>
-          <p class="exception-desc">Transporter has not confirmed pickup.</p>
-        </div>
-        <div class="exception-card sev-pod reveal reveal-delay-2">
-          <span class="exception-tag">POD Pending</span>
-          <div class="exception-id">Shipment NX-3401</div>
-          <p class="exception-desc">Delivery completed, POD unavailable.</p>
-        </div>
-      </div>
-      <p class="exceptions-note reveal">Nexload brings exceptions to the surface so teams can act before they become bigger problems.</p>
-    </div>
-  </section>
-
-  <!-- TRANSPORTER WORKFLOW -->
-  <section class="section-pad bg-base" id="transporters">
-    <div class="container">
-      <span class="eyebrow reveal" style="margin-bottom:24px;display:inline-flex;">For Transporters</span>
-      <h2 class="display-lg transparency-head reveal" style="margin-top:24px;">A simpler workflow for transporters.</h2>
-      <p class="body-lg transparency-body reveal reveal-delay-1">Transporters receive the information they need, update shipment progress and submit delivery confirmation through a simpler digital workflow.</p>
-
-      <div class="tp-track reveal" id="tpTrack">
-        <div class="tp-line-bg"></div>
-        <div class="tp-line-fill" id="tpFill"></div>
-        <div class="tp-nodes" id="tpNodes">
-          <div class="tp-node" data-tp><div class="tp-dot"><span class="tp-num">01</span></div><span class="tp-label">Receive shipment</span></div>
-          <div class="tp-node" data-tp><div class="tp-dot"><span class="tp-num">02</span></div><span class="tp-label">Confirm</span></div>
-          <div class="tp-node" data-tp><div class="tp-dot"><span class="tp-num">03</span></div><span class="tp-label">Pickup</span></div>
-          <div class="tp-node" data-tp><div class="tp-dot"><span class="tp-num">04</span></div><span class="tp-label">Update</span></div>
-          <div class="tp-node" data-tp><div class="tp-dot"><span class="tp-num">05</span></div><span class="tp-label">Deliver</span></div>
-          <div class="tp-node" data-tp><div class="tp-dot"><span class="tp-num">06</span></div><span class="tp-label">Submit POD</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ANALYTICS -->
-  <section class="section-pad bg-dark" id="analytics">
-    <div class="grid-lines"></div>
-    <div class="container">
-      <div class="analytics-top">
-        <div class="analytics-head reveal">
-          <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">Analytics</span>
-          <h2 class="display-lg" style="margin-top:24px;">Everything your team needs to manage shipments.</h2>
-        </div>
-        <span class="analytics-note reveal">Sample data — product preview</span>
-      </div>
-
-      <div class="product-frame reveal reveal-delay-1">
-        <div class="product-topbar">
-          <div class="product-brand"><img src="data:image/png;base64,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" alt="" style="width:16px;height:auto;">Nexload Analytics</div>
-          <div class="bi-topbar-right">
-            <div class="bi-filter">
-              <span>Last 30 Days</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <span class="product-badge">Product Preview</span>
-          </div>
-        </div>
-
-        <div class="product-body">
-          <div class="bi-kpis">
-            <div class="stat-card reveal"><div class="stat-num">1,284</div><div class="stat-label">Shipments This Month</div></div>
-            <div class="stat-card reveal reveal-delay-1"><div class="stat-num">94%</div><div class="stat-label">On-Time Delivery Rate</div></div>
-            <div class="stat-card reveal reveal-delay-2"><div class="stat-num">2.4 Days</div><div class="stat-label">Avg. Delivery Turnaround</div></div>
-            <div class="stat-card reveal reveal-delay-3"><div class="stat-num">6.2 Hrs</div><div class="stat-label">Avg. POD Turnaround</div></div>
-            <div class="stat-card is-attention reveal"><div class="stat-num">18</div><div class="stat-label">Delayed / Exception Shipments</div></div>
-          </div>
-
-          <div class="bi-charts">
-            <div class="bi-chart-card reveal">
-              <div class="bi-chart-title">Shipment Volume Over Time</div>
-              <svg class="chart-svg" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
-                <polyline points="0,70 40,62 80,66 120,48 160,52 200,30 240,34 300,14" style="fill:none;stroke:var(--dark);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.75;"/>
-                <circle cx="300" cy="14" r="4" fill="var(--lime)" stroke="var(--dark)" stroke-width="1"/>
-              </svg>
-              <div class="bi-chart-sub">Shipments created per week</div>
-            </div>
-
-            <div class="bi-chart-card reveal reveal-delay-1">
-              <div class="bi-chart-title">Delivered vs Delayed</div>
-              <div class="bi-bars">
-                <div class="bi-bar-group"><div class="bi-bar is-delivered" style="height:82%"></div><div class="bi-bar is-delayed" style="height:18%"></div></div>
-                <div class="bi-bar-group"><div class="bi-bar is-delivered" style="height:88%"></div><div class="bi-bar is-delayed" style="height:12%"></div></div>
-                <div class="bi-bar-group"><div class="bi-bar is-delivered" style="height:75%"></div><div class="bi-bar is-delayed" style="height:25%"></div></div>
-                <div class="bi-bar-group"><div class="bi-bar is-delivered" style="height:91%"></div><div class="bi-bar is-delayed" style="height:9%"></div></div>
-                <div class="bi-bar-group"><div class="bi-bar is-delivered" style="height:85%"></div><div class="bi-bar is-delayed" style="height:15%"></div></div>
-                <div class="bi-bar-group"><div class="bi-bar is-delivered" style="height:94%"></div><div class="bi-bar is-delayed" style="height:6%"></div></div>
-              </div>
-              <div class="bi-bar-legend">
-                <span><span class="dot" style="background:var(--lime);"></span>Delivered</span>
-                <span><span class="dot" style="background:#E0A400;"></span>Delayed</span>
-              </div>
-            </div>
-
-            <div class="bi-chart-card reveal reveal-delay-2">
-              <div class="bi-chart-title">Shipment Status Breakdown</div>
-              <div class="bi-donut">
-                <svg class="bi-donut-svg" viewBox="0 0 42 42" aria-hidden="true">
-                  <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="rgba(5,36,36,.08)" stroke-width="6"/>
-                  <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#4CAF50" stroke-width="6" stroke-dasharray="42 58" stroke-dashoffset="0"/>
-                  <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#2E7CF6" stroke-width="6" stroke-dasharray="35 65" stroke-dashoffset="-42"/>
-                  <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#9AA0A6" stroke-width="6" stroke-dasharray="14 86" stroke-dashoffset="-77"/>
-                  <circle cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#E0A400" stroke-width="6" stroke-dasharray="9 91" stroke-dashoffset="-91"/>
-                </svg>
-                <ul class="bi-legend">
-                  <li><span class="dot" style="background:#4CAF50;"></span>Delivered — 42%</li>
-                  <li><span class="dot" style="background:#2E7CF6;"></span>In Transit — 35%</li>
-                  <li><span class="dot" style="background:#9AA0A6;"></span>Pending — 14%</li>
-                  <li><span class="dot" style="background:#E0A400;"></span>Delayed — 9%</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR -->
-  <section class="section-pad bg-base" id="who-for">
-    <div class="container">
-      <div class="who-head reveal">
-        <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">Who It's For</span>
-        <h2 class="display-lg" style="margin-top:24px;">Built for teams moving goods every day.</h2>
-      </div>
-      <div class="who-grid">
-        <div class="who-item reveal">
-          <div class="who-title">Warehouse Teams</div>
-          <p class="who-desc">Manage dispatch and transportation without fragmented coordination.</p>
-        </div>
-        <div class="who-item reveal reveal-delay-1">
-          <div class="who-title">Logistics Teams</div>
-          <p class="who-desc">Manage shipments and transporter activity through one workflow.</p>
-        </div>
-        <div class="who-item reveal reveal-delay-2">
-          <div class="who-title">Operations Teams</div>
-          <p class="who-desc">Understand what's moving, what's delayed and what's complete.</p>
-        </div>
-        <div class="who-item reveal reveal-delay-3">
-          <div class="who-title">Business &amp; Management</div>
-          <p class="who-desc">Measure transportation performance and operational trends.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SYSTEMS & TRUST -->
-  <section class="section-pad bg-alt" id="trust">
-    <div class="container">
-      <div class="trust-col-head reveal" style="max-width:640px;">
-        <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">Trust</span>
-        <h2 class="display-lg" style="margin-top:24px;">Built for operationally critical workflows.</h2>
-      </div>
-      <ul class="trust-list reveal reveal-delay-1" style="max-width:480px;">
-        <li><svg class="trust-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Secure access</li>
-        <li><svg class="trust-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Role-based permissions</li>
-        <li><svg class="trust-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Activity history</li>
-        <li><svg class="trust-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Audit trail</li>
-        <li><svg class="trust-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Data protection</li>
-      </ul>
     </div>
   </section>
 
@@ -1326,12 +847,27 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
     <div class="container">
       <div class="about-grid">
         <div class="about-head reveal">
-          <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">About Nexload</span>
+          <span class="eyebrow" style="margin-bottom:24px;display:inline-flex;">About Us</span>
           <h2 class="display-md" style="margin-top:24px;">Building a simpler way to move goods.</h2>
+          <p class="body-lg about-intro">Nexload was built to simplify the fragmented coordination that happens between warehouses and transportation partners.</p>
+          <p class="body-lg about-intro">We believe moving goods should be as simple as moving information.</p>
         </div>
-        <div class="reveal reveal-delay-1">
-          <p class="body-lg" style="max-width:60ch;font-size:19px;">Nexload was built to simplify the fragmented coordination that happens between warehouses and transportation partners.</p>
-          <p class="body-lg" style="max-width:60ch;font-size:19px;margin-top:20px;">We believe moving goods should be as simple as moving information.</p>
+        <div class="about-list">
+          <div class="about-item reveal">
+            <span class="feature-num">01 — Our goal</span>
+            <div class="feature-title">What we want to achieve</div>
+            <p class="feature-desc">A transportation ecosystem where the right vehicle is always within reach — where transporters find steady loads, customers find reliable capacity, and both benefit from fair, competitive rates.</p>
+          </div>
+          <div class="about-item reveal reveal-delay-1">
+            <span class="feature-num">02 — Today</span>
+            <div class="feature-title">What we do</div>
+            <p class="feature-desc">We bring independent transporters onto one coordinated network and match available vehicles with customer loads — reducing empty runs, shortening turnaround times and making every shipment easier to plan.</p>
+          </div>
+          <div class="about-item reveal reveal-delay-2">
+            <span class="feature-num">03 — Tomorrow</span>
+            <div class="feature-title">What's next</div>
+            <p class="feature-desc">We are growing our transporter network, expanding into new routes and regions, and broadening our services so customers can rely on a single partner for more of their logistics needs.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1347,10 +883,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
     </div>
     <div class="container">
       <h2 class="display-lg final-cta-headline reveal">Ready to move beyond manual transportation coordination?</h2>
-      <p class="body-lg final-cta-body reveal reveal-delay-1">See how Nexload can simplify your transportation workflow.</p>
-      <div class="final-cta-actions reveal reveal-delay-2">
-        <button class="btn btn-primary" data-open-modal>Book a Demo</button>
-      </div>
+      <p class="body-lg final-cta-body">See how Nexload can simplify your transportation workflow.</p>
     </div>
   </section>
 
@@ -1364,6 +897,70 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
     </svg> -->
   </div>
   <div class="container">
+    <div class="footer-contact" id="contact">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--lime);">Contact</span>
+        <h2 class="footer-contact-title">Let's get your shipment moving.</h2>
+        <p class="footer-contact-copy">Have a shipment to move or want to learn how Nexload can simplify your transportation workflow? Send us a message and our team will get back to you.</p>
+        <div class="footer-contact-row">
+          <span>Email</span>
+          <a href="mailto:support@nexload.in">support@nexload.in</a>
+        </div>
+        <div class="wa-qr">
+          <a class="wa-qr-code" id="waQrLink" href="#" target="_blank" rel="noopener" aria-label="Chat with Nexload on WhatsApp">
+            <img id="waQrImage" src="" alt="QR code to chat with Nexload on WhatsApp" width="84" height="84" loading="lazy">
+          </a>
+          <div class="wa-qr-text">
+            <span class="wa-qr-label">Scan to chat on WhatsApp</span>
+            <a class="wa-qr-link" id="waChatLink" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3z"/></svg>
+              Chat with us
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <form id="contactForm" novalidate>
+          <div class="cf-row">
+            <div class="cf-field" id="f-name">
+              <label for="cf-name">Name *</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="name-err">
+              <span class="cf-error" id="name-err" role="alert"></span>
+            </div>
+            <div class="cf-field" id="f-phone">
+              <label for="cf-phone">Phone Number *</label>
+              <input id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" required aria-describedby="phone-err">
+              <span class="cf-error" id="phone-err" role="alert"></span>
+            </div>
+          </div>
+          <div class="cf-field" id="f-email">
+            <label for="cf-email">Email *</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" maxlength="150" required aria-describedby="email-err">
+            <span class="cf-error" id="email-err" role="alert"></span>
+          </div>
+          <div class="cf-field" id="f-message">
+            <label for="cf-message">Message *</label>
+            <textarea id="cf-message" name="message" maxlength="2000" required aria-describedby="message-err"></textarea>
+            <span class="cf-error" id="message-err" role="alert"></span>
+          </div>
+          <div class="cf-hp" aria-hidden="true">
+            <label for="cf-company">Company</label>
+            <input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="cf-actions">
+            <button type="submit" class="btn btn-primary" id="cfSubmit">Send Message <span class="btn-arrow">→</span></button>
+            <span class="cf-note">We reply within one business day</span>
+          </div>
+          <div class="cf-alert" id="cfAlert" role="alert"></div>
+        </form>
+        <div class="cf-success" id="cfSuccess" tabindex="-1" aria-live="polite">
+          <div class="cf-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div>
+          <h3>Thank you! Your message has been sent.</h3>
+          <p>We've received your enquiry and our team will get in touch with you soon.</p>
+          <button type="button" class="btn btn-ghost-invert" id="cfAnother">Send another message</button>
+        </div>
+      </div>
+    </div>
     <div class="footer-top">
       <div>
         <div class="footer-brand-row">
@@ -1374,11 +971,10 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Company</div>
-        <a href="#product">Product</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#who-for">Solutions</a>
-        <a href="#about">About</a>
-        <a href="#" data-open-modal>Contact</a>
+        <a href="#top">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Legal</div>
@@ -1396,29 +992,6 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
     </div>
   </div>
 </footer>
-
-<!-- CONTACT MODAL -->
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-card">
-    <button class="modal-close" id="modalClose" aria-label="Close dialog">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M19 5L5 19"/></svg>
-    </button>
-    <h3 class="modal-title" id="modalTitle">Let's get your shipment moving.</h3>
-    <p class="modal-copy">Have a shipment to move or want to learn how Nexload can simplify your transportation workflow?</p>
-    <div class="modal-contact-row">
-      <span class="modal-contact-label">Email</span>
-      <a class="modal-contact-value" href="mailto:support@nexload.in">support@nexload.in</a>
-    </div>
-    <div class="modal-contact-row">
-      <span class="modal-contact-label">Phone</span>
-      <a class="modal-contact-value" href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a>
-    </div>
-    <div class="modal-qr">
-      <img id="qrImage" src="" alt="QR code to save Nexload contact details" width="88" height="88" loading="lazy">
-      <span class="modal-qr-text">Scan to save our contact</span>
-    </div>
-  </div>
-</div>
 
 <!-- GO TO TOP -->
 <button class="go-top" id="goTop" aria-label="Go to top">
@@ -1585,45 +1158,114 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--lime);outline-offs
     });
   })();
 
-  /* ---------- Contact modal ---------- */
-  var overlay = document.getElementById('modalOverlay');
-  var lastFocused = null;
-  function focusableEls(){
-    return overlay.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])');
-  }
-  function openModal(){
-    lastFocused = document.activeElement;
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    var f = focusableEls();
-    if(f.length) f[0].focus();
-    document.addEventListener('keydown', trapKey);
-  }
-  function closeModal(){
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    document.removeEventListener('keydown', trapKey);
-    if(lastFocused) lastFocused.focus();
-  }
-  function trapKey(e){
-    if(e.key === 'Escape'){ closeModal(); return; }
-    if(e.key === 'Tab'){
-      var f = Array.prototype.slice.call(focusableEls());
-      if(!f.length) return;
-      var first = f[0], last = f[f.length-1];
-      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    }
-  }
-  document.querySelectorAll('[data-open-modal]').forEach(function(el){
-    el.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
-  });
-  document.getElementById('modalClose').addEventListener('click', closeModal);
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  /* ---------- Contact form -> Google Sheets ----------
+     Paste your Google Apps Script web app URL below (see GOOGLE-SHEETS-SETUP.md).
+     Each submission is POSTed as form fields: name, email, phone,
+     message, submitted_at — the script adds it as a new row
+     in your Google Sheet. */
+  var GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzjNzTE4n9oAo63NvgFdos4Ldz0PG-A7c17rrGVqTi58mIWrrd8_Y7r0Gvd5QVfBLzm/exec';
 
-  /* Configurable QR: encodes a vCard-style contact link. Swap QR_DATA to change target. */
-  var QR_DATA = encodeURIComponent('MATMSG:TO:support@nexload.in;SUB:Nexload Enquiry;;');
-  document.getElementById('qrImage').src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=8&data=' + QR_DATA;
+  var form = document.getElementById('contactForm');
+  var cfSuccess = document.getElementById('cfSuccess');
+  var cfAlert = document.getElementById('cfAlert');
+  var cfSubmit = document.getElementById('cfSubmit');
+  var rules = {
+    name: function(v){
+      if(!v) return 'Please enter your name.';
+      if(v.length < 2) return 'Name must be at least 2 characters.';
+      return '';
+    },
+    email: function(v){
+      if(!v) return 'Please enter your email address.';
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return 'Please enter a valid email address.';
+      return '';
+    },
+    phone: function(v){
+      if(!v) return 'Please enter your phone number.';
+      if(!/^\+?[\d\s\-()]+$/.test(v)) return 'Phone number can only contain digits, spaces, +, - and ().';
+      var d = v.replace(/\D/g,'');
+      if(d.length < 10 || d.length > 15) return 'Please enter a valid phone number (10–15 digits).';
+      return '';
+    },
+    message: function(v){
+      if(!v) return 'Please enter a message.';
+      if(v.length < 10) return 'Message must be at least 10 characters.';
+      return '';
+    }
+  };
+  function validateField(name){
+    var input = form.elements[name];
+    var msg = rules[name](input.value.trim());
+    document.getElementById('f-' + name).classList.toggle('invalid', !!msg);
+    input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    document.getElementById(name + '-err').textContent = msg;
+    return !msg;
+  }
+  Object.keys(rules).forEach(function(name){
+    var input = form.elements[name];
+    input.addEventListener('blur', function(){ if(input.value.trim()) validateField(name); });
+    input.addEventListener('input', function(){
+      if(document.getElementById('f-' + name).classList.contains('invalid')) validateField(name);
+    });
+  });
+  function setLoading(on){
+    cfSubmit.disabled = on;
+    cfSubmit.firstChild.nodeValue = on ? 'Sending… ' : 'Send Message ';
+  }
+  function showAlert(msg){ cfAlert.textContent = msg; cfAlert.classList.add('show'); }
+  function showSuccess(){
+    form.reset();
+    form.style.display = 'none';
+    cfSuccess.classList.add('show');
+    cfSuccess.focus();
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    cfAlert.classList.remove('show');
+    var firstInvalid = null;
+    Object.keys(rules).forEach(function(name){
+      if(!validateField(name) && !firstInvalid) firstInvalid = form.elements[name];
+    });
+    if(firstInvalid){ firstInvalid.focus(); return; }
+    if(form.elements.company.value){ showSuccess(); return; } // honeypot: bots only
+    if(!GOOGLE_SHEET_URL){
+      showAlert('The contact form is not connected yet. Please email us at support@nexload.in.');
+      console.warn('Nexload: set GOOGLE_SHEET_URL to enable form submissions.');
+      return;
+    }
+    var data = new URLSearchParams();
+    ['name','email','phone','message'].forEach(function(k){ data.append(k, form.elements[k].value.trim()); });
+    data.append('submitted_at', new Date().toISOString());
+    setLoading(true);
+    // no-cors: works from any domain; the response is opaque, so a delivered
+    // request counts as success and only a network failure counts as an error.
+    fetch(GOOGLE_SHEET_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{ 'Content-Type':'application/x-www-form-urlencoded' },
+      body:data.toString()
+    }).then(function(){
+      setLoading(false); showSuccess();
+    }).catch(function(){
+      setLoading(false);
+      showAlert('Sorry, we couldn\'t send your message. Please try again, or email support@nexload.in.');
+    });
+  });
+  document.getElementById('cfAnother').addEventListener('click', function(){
+    cfSuccess.classList.remove('show');
+    form.style.display = '';
+    form.elements.name.focus();
+  });
+
+  /* ---------- WhatsApp Business chat ----------
+     Set WHATSAPP_NUMBER to your WhatsApp Business number in international
+     format, digits only (e.g. '919876543210' for +91 98765 43210).
+     The QR and the "Chat with us" link both open a chat with WHATSAPP_MESSAGE pre-filled. */
+  var WHATSAPP_NUMBER = '919645677440';
+  var WHATSAPP_MESSAGE = 'Hi Nexload, I would like to know more about your services.';
+  var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER.replace(/\D/g,'') + '?text=' + encodeURIComponent(WHATSAPP_MESSAGE);
+  document.getElementById('waQrLink').href = waUrl;
+  document.getElementById('waChatLink').href = waUrl;
+  document.getElementById('waQrImage').src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=' + encodeURIComponent(waUrl);
 
   /* ---------- Go to top ---------- */
   var goTop = document.getElementById('goTop');
